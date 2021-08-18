@@ -4108,6 +4108,7 @@
     </noscript>
 </head>
 
+
 <body class="">
 <script>
     if (/Chrome\/37.0.2062.94/i.test(navigator.userAgent) && (/(windows 7)|(windows nt 6.1)/i.test(navigator.userAgent))) {
@@ -4121,6 +4122,7 @@
         body.className += ' browser-edge';
     }
 </script>
+
 <div id="wrapper">
     <script>if (window.bds && bds.util && bds.util.setContainerWidth) {
         bds.util.setContainerWidth();
@@ -4158,13 +4160,15 @@
                     <!--                        <style>.index-logo-srcnew {display: none;}@media (-webkit-min-device-pixel-ratio: 2),(min&#45;&#45;moz-device-pixel-ratio: 2),(-o-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){.index-logo-src {display: none;}.index-logo-srcnew {display: inline;}}</style>-->
                     <div id="lg" class="s-p-top"><img hidefocus="true" id="s_lg_img_new" class='index-logo-srcnew'
                                                       src="images/baidu.png" width="240" height="80"></div>
-                    <form id="form" name="f" action="show.html" class="fm"><input type="hidden" name="ie" value="utf-8"><input
+                    <form id="form" name="f" action="show.html" class="fm">
+                        <input type="hidden" name="ie" value="utf-8"><input
                             type="hidden" name="f" value="8"><input type="hidden" name="rsv_bp" value="1"><input
                             type="hidden" name="rsv_idx" value="1"><input type=hidden name=ch value=""><input
-                            type=hidden name=tn value="baidu"><input type=hidden name=bar value="" onkeyup="hint()"><span
+                            type=hidden name=tn value="baidu"><input type=hidden name=bar value=""><span
                             class="bg s_ipt_wr"><input id="kw" name="wd" class="s_ipt" value="" maxlength="255"
-                                                       autocomplete="off" ></span><span
-                            class="bg s_btn_wr"><input type="submit" id="su" value="百度一下" class="bg s_btn"></span><span
+                                                       autocomplete="off"></span><span
+                            class="bg s_btn_wr"><input type="submit" id="su" value="百度一下" class="bg s_btn"
+                                                       onclick="return checkUser()"></span><span
                             class="tools"><span id="mHolder">
                                     <div id="mCon"><span>输入法</span></div>
                                     <ul id="mMenu">
@@ -4207,12 +4211,24 @@
     </div>
 </div>
 <script>
-    function hint() {
-        alert('ee')
-        console.log('ee')
+    function checkUser() {
+        let kw = document.getElementById("kw").value;
+        console.log(kw);
+        if (kw === '黄金津' || kw === '金宝' || kw === '金金' || kw === '傻儿' || kw === '小塔') {
+            return true;
+        } else {
+            alert('不好意思，今天百度只允许搜索黄金津哦！')
+            return false;
+        }
     }
+</script>
+
+
+<script>
+
 
     let allLinks = document.getElementsByTagName("a"); // 选取所有超链接
+
     for (var i = 0; i < allLinks.length; i++) {
         allLinks[i].href = "javascript:;" // 防止跳转
         allLinks[i].target = "_self"; // 不弹出新窗口
